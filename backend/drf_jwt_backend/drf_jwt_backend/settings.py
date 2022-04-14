@@ -38,8 +38,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'authentication.apps.AuthenticationConfig',
     'corsheaders',
-    'cars.apps.CarsConfig'  # This app is for example use only
-]
+    'comments.apps.CommentsConfig',
+    'replies.apps.RepliesConfig',
+    'cars.apps.CarsConfig', # This app is for example use only
+    
+] 
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
