@@ -8,11 +8,14 @@ from django.shortcuts import get_object_or_404
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_all_comments(request, pk):
+def get_all_comments(request,video_id):
     
-    comments = Comment.objects.filter(video_id=request.video.id, pk=pk)
+    comments = Comment.objects.filter(video_id=video_id)
     serializer = CommentSerializer(comments, many=True)
-    return Response(serializer.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])

@@ -8,8 +8,10 @@ from django.shortcuts import get_object_or_404
 
 
 @api_view(['GET'])
-@permission_classes([AllowAny])
-def get_all_replies(request):
-     replies = Reply.objects.filter(comment_id=request.comment.id)
+@permission_classes([IsAuthenticated])
+def get_all_replies(request, comment_id):
+     replies = Reply.objects.filter(comment_id = request.comment_id)
      serializer = ReplySerializer(replies, many=True)
      return Response(serializer.data)
+ 
+
