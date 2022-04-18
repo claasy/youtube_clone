@@ -2,7 +2,8 @@ from django.urls import path, include
 from replies import views 
 
 urlpatterns = [
-    # path('', views.user_replies),
  
-    path('<int:comment_id>/', views.get_all_replies)
+    # path('add/<int:comment_id>/', views.reply_comment), # // POST
+    path('allreplies/<int:comment_id>/', views.comment_replies) #// GET ALL replies for a comment
+    
 ]
