@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import './CreatePost.css';
+// import './Comment.css';
 
-const CreatePost = (props) => {
+const CreateCommentForm = (props) => {
 
     const [name, setName] = useState('');
-    const [post, setPost] = useState ('');
+    const [comment, setComment] = useState ('');
 
     function handleSubmit(event) {
         event.preventDefault();
-        let newPost = {
+        let newComment = {
             name: name,
-            post: post
+            comment: comment
         };
-        console.log(newPost);
-        props.addNewPostProperty(newPost)
+        console.log(newComment);
+        props.addNewCommentProperty(newComment)
     }
 
     return ( 
@@ -23,12 +23,12 @@ const CreatePost = (props) => {
                 <input type='string' className="form-control" value={name} onChange={(event) => setName(event.target.value)} />
             </div>
             <div className='form-group'>
-                <label>Post</label>
-                <input type='string' className="form-control" value={post} onChange={(event) => setPost(event.target.value)} />
+                <label>Comment</label>
+                <input type='string' className="form-control" value={comment} onChange={(event) => setComment(event.target.value)} />
             </div>
             <button type='submit'className="btn btn-primary" style={{'margin-top': '1em'}}>Create</button>
         </form>
      );
 }
  
-export default CreatePost;
+export default CreateCommentForm;

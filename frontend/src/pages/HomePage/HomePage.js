@@ -4,13 +4,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import DisplayComments from "../../components/NavBar/DisplayComments";
+import CreateCommentForm from "../../components/CreateComment/CreateCommentForm";
 
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   const [user, token] = useAuth();
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState([
+    {
+      user: ' Justin ',
+      text: 'Good Morning ',
+    }, 
+  ]);
+  function addNewComment(comment) {
+    let tempComments = [...comments, comment];
+    setComments(tempComments);
+  }
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -37,7 +47,10 @@ const HomePage = () => {
           </p>
         ))}
         <div>
-      <DisplayComments />
+          <CreateCommentForm addNewCommentProperty={addNewComment}/>
+        </div>
+        <div>
+      <DisplayComments parentComments={comments} />
     </div>
     </div>
     
