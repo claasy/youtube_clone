@@ -14,7 +14,7 @@ const HomePage = () => {
   const [comments, setComments] = useState([
     {
       user: ' Justin ',
-      text: 'Good Morning ',
+      text: 'Good Morning! ',
     }, 
   ]);
   function addNewComment(comment) {
@@ -39,7 +39,6 @@ const HomePage = () => {
   }, [token]);
   return (
     <div className="container">
-      <h1>Home Page for {user.username}!</h1>
       {comments &&
         comments.map((comment) => (
           <p key={comment.id}>

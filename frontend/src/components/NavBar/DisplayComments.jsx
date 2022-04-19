@@ -19,7 +19,7 @@ const DisplayComments = (props) => {
                 <td>{comment.name}</td>
               </tr>
               <tr>
-                <td>{comment.post}</td>
+                <td>{comment.text}</td>
               </tr>
               <tr>
                 <CustomButton comment="👍"/> 
