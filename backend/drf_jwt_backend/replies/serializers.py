@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from .models import Reply
+from django.contrib.auth.models import User
+
 
 class ReplySerializer(serializers.ModelSerializer):
     class Meta:

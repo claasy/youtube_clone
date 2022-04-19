@@ -16,11 +16,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='reply',
             name='comment',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='comments.comment'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='comments.comment'),
         ),
         migrations.AddField(
             model_name='reply',
             name='user',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='authentication.user'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='authentication.user'),
         ),
     ]

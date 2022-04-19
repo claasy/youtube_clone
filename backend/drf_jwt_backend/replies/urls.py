@@ -3,7 +3,7 @@ from replies import views
 
 urlpatterns = [
  
-    # path('add/<int:comment_id>/', views.reply_comment), # // POST
-    path('allreplies/<int:comment_id>/', views.comment_replies) #// GET ALL replies for a comment
+    path('allreplies/<int:comment_id>/', views.comment_replies), #// GET ALL replies for a comment
+    path('commentreply/<int:comment_id>/', views.comment_reply) #// GET ALL replies for a comment
     
 ]
