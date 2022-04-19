@@ -12,42 +12,12 @@ import Page from "./pages/Page/Page";
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import CreateComment from "./components/CreateComment";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
-  
-
-      const [videos, setVideos] = useState([{}])
-      useEffect(() => {
-        getAllComments();
-      }, [])
-      async function getAllComments(){
-        let response = await axios.get('http://127.0.0.1:8000/api/comments/');
-        setVideos(response.data);
-      }
-      async function addNewComment(entry){
-        let response = await axios.post('http://127.0.0.1:8000/api/comments/', entry);
-        if(response.status === 201){
-          await getAllComments();
-        }
-        let tempEntries = [...videos, entry];
-        setVideos(tempEntries);
-      }
-      async function deleteVideo(id){
-        let response = await axios.delete('http://127.0.0.1:8000/api/comments/', [id])
-        if(response.status === 201){
-          await getAllComments();
-      }
-  
-      
-
-    
-  }
-
-
-
   return (
     <div>
       <Navbar />
@@ -57,10 +27,19 @@ function App() {
           element={
             <PrivateRoute>
               <HomePage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/page"
+          element={
+            <PrivateRoute>
               <Page />
             </PrivateRoute>
           }
         />
+        
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         
