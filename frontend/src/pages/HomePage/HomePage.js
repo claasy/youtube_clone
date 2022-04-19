@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import DisplayComments from "../../components/NavBar/DisplayComments";
+
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -34,7 +36,11 @@ const HomePage = () => {
             {comment.year} {comment.model} {comment.make}
           </p>
         ))}
+        <div>
+      <DisplayComments />
     </div>
+    </div>
+    
   );
 };
 

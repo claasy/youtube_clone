@@ -18,6 +18,9 @@ import CreateComment from "./components/CreateComment";
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
+  
+  
+  
   return (
     <div>
       <Navbar />
