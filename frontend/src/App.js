@@ -12,7 +12,7 @@ import Page from "./pages/Page/Page";
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
-import createCommentForm from "./components/CreateComment/CreateCommentForm";
+import CreateCommentForm from "./components/CreateComment/CreateCommentForm";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
