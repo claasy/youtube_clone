@@ -5,18 +5,16 @@ import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import useAuth from "././hooks/useAuth";
 
-
-
-
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import Page from "./pages/Page/Page";
+import Page from "./components/Page/Page";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+// import Page from "./components/Page";
 import CreateCommentForm from "./components/CreateComment/CreateCommentForm";
 
 // Util Imports
