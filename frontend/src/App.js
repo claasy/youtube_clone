@@ -1,15 +1,11 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-<<<<<<< HEAD
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import useAuth from "././hooks/useAuth";
-=======
 // import axios from "axios";
-import React, { useState } from "react";
 // import useAuth from "././hooks/useAuth";
->>>>>>> c58c33b00efa9c344d492f3c81538ef889196981
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -20,11 +16,9 @@ import Page from "./components/Page/Page";
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
-<<<<<<< HEAD
+
 // import Page from "./components/Page";
-=======
 import DisplayComments from "./components/CommentList/DisplayComments";
->>>>>>> c58c33b00efa9c344d492f3c81538ef889196981
 import CreateCommentForm from "./components/CreateComment/CreateCommentForm";
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
