@@ -1,11 +1,10 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import axios from "axios";
+
 import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import useAuth from "././hooks/useAuth";
-// import axios from "axios";
-// import useAuth from "././hooks/useAuth";
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -17,37 +16,34 @@ import Page from "./components/Page/Page";
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 
-// import Page from "./components/Page";
 import DisplayComments from "./components/CommentList/DisplayComments";
 import CreateCommentForm from "./components/CreateComment/CreateCommentForm";
-// Util Imports
+
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
-  // const APIKEY = "AIzaSyAmWE_bDTa8g6GZUvrVMQn9UJkUeX2_NWU";
-  // const [user, token] = useAuth();
-  // const [videos, setVideos] = useState([]);
+  const API_KEY = "AlzaSyDqq8qNVoNnuzEc3WA7KtosxpJbJpZMkNO";
+  const [user, token] = useAuth();
+  const [videos, setVideos] = useState([]);
   const [comments, setComments] = useState([]);
 
-  // useEffect(() => {
-  //   fetchVideos();
-  // }, [token]);
+  useEffect(() => {
+    fetchVideos("castles");
+  }, [token]);
 
-  // const fetchVideos = async (searchTerm) => {
-  //   try {
-  //     let response = await axios.get(
-  //       `https://www.googleapis.com/youtube/v3/search?q=${searchTerm}part=snippet&maxResults=10&key=${APIKEY}`,
-  //       {
-  //         headers: {
-  //           Authorization: "Bearer " + token,
-  //         },
-  //       }
-  //     );
-  //     setVideos(response.data);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
+  const fetchVideos = async (searchTerm) => {
+    console.log("Inside fetch Videos")
+    try {
+      let response = await axios.get(
+        `https://www.googleapis.com/youtube/v3/search?q=castles&key=AIzaSyDH9ESes-E7RKgZHm7IEHrHn7L4Wwk6Zow&part=snippet&maxResults=10`
+      
+      );
+      console.log("Yout Tube Response: ", response.data)
+      setVideos(response.data.items);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   function addNewComment(comment) {
     let tempComments = [...comments, comment];
@@ -62,7 +58,7 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              <HomePage generalVideos={videos} />
             </PrivateRoute>
           }
         />

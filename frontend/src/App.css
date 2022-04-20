@@ -56,3 +56,11 @@ button:hover {
   padding: 3px 7px;
   font-size: 17px;
 }
+
+.border-box {
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+  margin: 1em;
+  padding: 1em
+}
