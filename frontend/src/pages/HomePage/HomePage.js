@@ -6,50 +6,41 @@ import useAuth from "../../hooks/useAuth";
 import DisplayComments from "../../components/NavBar/DisplayComments";
 import CreateCommentForm from "../../components/CreateComment/CreateCommentForm";
 
-
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   const [user, token] = useAuth();
-  const [comments, setComments] = useState([]);
-  
-  function addNewComment(comment) {
-    let tempComments = [...comments, comment];
-    setComments(tempComments);
-  }
+  const [cars, setCars] = useState([]);
 
   useEffect(() => {
-    const fetchComments = async () => {
+    const fetchCars = async () => {
       try {
-        let response = await axios.get("http://127.0.0.1:8000/api/comments/", {
+        let response = await axios.get("http://127.0.0.1:8000/api/cars/", {
           headers: {
             Authorization: "Bearer " + token,
           },
         });
-        setComments(response.data);
+        setCars(response.data);
       } catch (error) {
         console.log(error.message);
       }
     };
-    fetchComments();
+    fetchCars();
   }, [token]);
   return (
     <div className="container">
-      {comments &&
-        comments.map((comment) => (
-          <p key={comment.id}>
-            {comment.year} {comment.model} {comment.make}
+      <h1>Home Page for {user.username}!</h1>
+      {cars &&
+        cars.map((car) => (
+          <p key={car.id}>
+            {car.year} {car.model} {car.make}
           </p>
         ))}
-        <div>
-          <CreateCommentForm addNewCommentProperty={addNewComment}/>
-        </div>
-        <div>
-      <DisplayComments parentComments={comments} />
     </div>
-    </div>
-    
   );
 };
 
 export default HomePage;
+
+
+

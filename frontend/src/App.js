@@ -18,7 +18,25 @@ import CreateCommentForm from "./components/CreateComment/CreateCommentForm";
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
-  
+ 
+  const APIKEY ="AIzaSyAmWE_bDTa8g6GZUvrVMQn9UJkUeX2_NWU"
+
+  useEffect(() => {
+    fetchVideos("castles");
+}, [token]);
+
+const fetchVideos = async (searchTerm) => {
+    try {
+      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}part=snippet&maxResults=10&key=${APIKEY}`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      setVideos(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   
   
   return (
@@ -49,6 +67,12 @@ function App() {
         
       </Routes>
       <Footer />
+      <div>
+            <CreateCommentForm addNewCommentProperty={addNewComment}/>
+          </div>
+          <div>
+        <DisplayComments parentComments={comments} />
+      </div>
     </div>
   );
 }
