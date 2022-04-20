@@ -2,6 +2,11 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import useAuth from "././hooks/useAuth";
+
+
+
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -20,6 +25,8 @@ import PrivateRoute from "./utils/PrivateRoute";
 function App() {
  
   const APIKEY ="AIzaSyAmWE_bDTa8g6GZUvrVMQn9UJkUeX2_NWU"
+  const [user, token] = useAuth();
+  const [videos, setVideos]=useState([]);
 
   useEffect(() => {
     fetchVideos("castles");
@@ -37,8 +44,6 @@ const fetchVideos = async (searchTerm) => {
       console.log(error.message);
     }
   };
-  
-  
   return (
     <div>
       <Navbar />
@@ -51,7 +56,6 @@ const fetchVideos = async (searchTerm) => {
             </PrivateRoute>
           }
         />
-
         <Route
           path="/page"
           element={
@@ -59,19 +63,18 @@ const fetchVideos = async (searchTerm) => {
               <Page />
             </PrivateRoute>
           }
-        />
-        
+        />      
         {/* <Route path="/search" element={<SearchPage />} /> */}
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        
+        <Route path="/login" element={<LoginPage />} />   
       </Routes>
       <Footer />
       <div>
-            <CreateCommentForm addNewCommentProperty={addNewComment}/>
+            {/* <CreateCommentForm addNewCommentProperty={addNewComment}/> */}
           </div>
+
           <div>
-        <DisplayComments parentComments={comments} />
+        {/* <DisplayComments parentComments={comments} /> */}
       </div>
     </div>
   );
