@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
 
 const VideoPage = (props) => {
     
-    const youTubePlaylistItemsAPI = 'https://www.googleapis.com/youtube/v3/videos'
+    useEffect(() => {
+        getAllVideos();
+      }, [])
+    
+      async function getAllVideos(){
+        let response = await axios.get('https://www.googleapis.com/youtube/v3/videos');
+        setVideos(response.data);
+      }
+      
     
     return ( 
         
