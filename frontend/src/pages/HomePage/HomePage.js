@@ -11,12 +11,8 @@ const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   const [user, token] = useAuth();
-  const [comments, setComments] = useState([
-    {
-      user: ' Justin ',
-      text: 'Good Morning! ',
-    }, 
-  ]);
+  const [comments, setComments] = useState([]);
+  
   function addNewComment(comment) {
     let tempComments = [...comments, comment];
     setComments(tempComments);
