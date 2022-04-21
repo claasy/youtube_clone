@@ -34,7 +34,7 @@ const HomePage = ({generalVideos}) => {
       {/* Mapp general videos  here */}
       {generalVideos.map((video, index) => {
         return (
-          <div key={index} > {video.snippet.title} {video.snippet.description} </div>
+          <div key={index} > {video.snippet.title} {video.snippet.description} {video.snippet.thumbnails.default.url}</div>
         )
       })}
     </div>
